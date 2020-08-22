@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const homePage = document.createElement('div');
   const slideTop = document.createElement('div');
 
+  // Social
+  const instagram = document.querySelector('.instagram');
+  const steam = document.querySelector('.steam');
+  const soundcluod = document.querySelector('.soundcloud');
+
   function topBar() {
     topbar.addEventListener('click', () => {
       topbar.style.display = 'none';
@@ -33,14 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
             tl.fromTo(
               '.slidetop',
               { y: '0%' },
-              { y: '-120%', duration: 0.5, ease: Power2.easeInOut }
+              { y: '-120%', duration: 0.7, ease: Power2.easeInOut }
             );
 
             setTimeout(() => {
               slideTop.style.display = 'none';
               topbar.style.display = 'flex';
               homePage.style.display = 'block';
-            }, 500);
+
+              tl.fromTo(
+                '.missing',
+                { opacity: '0' },
+                { opacity: '1', duration: 0.3, ease: Power2.easeInOut }
+              ).fromTo(
+                '.topbar',
+                { opacity: '0' },
+                { opacity: '1', duration: 0.3, ease: Power2.easeInOut },
+                '-=0.3'
+              );
+            }, 700);
           });
 
           tl.fromTo(
@@ -59,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then((data) => {
         //Style
-
         homePage.innerHTML = data;
         homePage.classList.add('missing');
 
         content.appendChild(homePage);
+
         nowTime();
         topBar();
       });
@@ -89,6 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const jam = document.querySelector('.jam');
       const date = document.querySelector('.date');
+
+      if (jam === null) {
+        console.log('tes');
+      }
 
       jam.innerHTML = tanggalJam;
       date.innerHTML = day;
