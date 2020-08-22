@@ -4,11 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const homePage = document.createElement('div');
   const slideTop = document.createElement('div');
 
-  // Social
-  const instagram = document.querySelector('.instagram');
-  const steam = document.querySelector('.steam');
-  const soundcluod = document.querySelector('.soundcloud');
-
   function topBar() {
     topbar.addEventListener('click', () => {
       topbar.style.display = 'none';
@@ -79,6 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         homePage.classList.add('missing');
 
         content.appendChild(homePage);
+
+        // from icontrigger.js
+        iconHome();
 
         nowTime();
         topBar();
